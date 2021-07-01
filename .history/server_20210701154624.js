@@ -9,7 +9,7 @@ const weatherController=require('./controller/Weather.controller');
 const movieController=require('./controller/Movies.controller');
 const axios =require('axios');
 
-// app.get('/weather',weatherController);
+app.get('/weather',weatherController);
 
 app.get('/movies',movieController);
 

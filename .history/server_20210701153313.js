@@ -1,5 +1,6 @@
 const express = require('express'); 
 const app = express(); 
+const axios =require('axios');
 const cors = require('cors');
 app.use(cors()) 
 require('dotenv').config();
@@ -7,11 +8,10 @@ const weatherData = require('./data/weather.json');
 const PORT =process.env.PORT;
 const weatherController=require('./controller/Weather.controller');
 const movieController=require('./controller/Movies.controller');
-const axios =require('axios');
 
-// app.get('/weather',weatherController);
+// app.get('/weather',(weatherController));
 
-app.get('/movies',movieController);
+// app.get('/movies',movieController);
 
 app.get('/weather',(req,res)=>{
 
@@ -34,16 +34,16 @@ app.get('/weather',(req,res)=>{
   
 });
 
-// app.get('/movies' ,(req,res) =>{
-//   let query = req.query.query
-//   let moviesData = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=39e6e233f56e3bd1134aa5a554afe4ac&query=${query}`).then(response =>{
-//     let moviesList = response.data.results.map((item,idx) =>{
-//       return new Movie(item);
-//     })
-//     console.log(moviesList);
-//     res.json(moviesList);
-//   }).catch(error=>res.send(error.message));
-// })
+app.get('/movies' ,(req,res) =>{
+  let query = req.query.query
+  let moviesData = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=39e6e233f56e3bd1134aa5a554afe4ac&query=${query}`).then(response =>{
+    let moviesList = response.data.results.map((item,idx) =>{
+      return new Movie(item);
+    })
+    console.log(moviesList);
+    res.json(moviesList);
+  }).catch(error=>res.send(error.message));
+})
 
 class ForeCast{
   constructor(weatherData){
@@ -52,11 +52,11 @@ class ForeCast{
   }
 } 
 
-// class Movie {
-//   constructor(movieData){
-//     this.title=movieData.title
-//     this.total_votes=movieData.vote_count
-//     this.poster="http://image.tmdb.org/t/p/w342"+movieData.poster_path
-//   }
-// }
+class Movie {
+  constructor(movieData){
+    this.title=movieData.title
+    this.total_votes=movieData.vote_count
+    this.poster="http://image.tmdb.org/t/p/w342"+movieData.poster_path
+  }
+}
 app.listen(8000);

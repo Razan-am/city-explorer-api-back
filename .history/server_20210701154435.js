@@ -13,26 +13,26 @@ const axios =require('axios');
 
 app.get('/movies',movieController);
 
-app.get('/weather',(req,res)=>{
+// app.get('/weather',(req,res)=>{
 
-  let lat = req.query.lat
-  let lon = req.query.lon
-  let searchQuery = req.query.searchQuery
+//   let lat = req.query.lat
+//   let lon = req.query.lon
+//   let searchQuery = req.query.searchQuery
 
-  console.log(lat);
-  console.log(lon);
-  console.log(searchQuery);
+//   console.log(lat);
+//   console.log(lon);
+//   console.log(searchQuery);
 
-  let weatherRespo = axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?key=1ce9a45e3f574b64af6379c6c4a8b0cc&lat=${lat}&lon=${lon}`).then((respose) =>{
-    weather=respose.data
+//   let weatherRespo = axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?key=1ce9a45e3f574b64af6379c6c4a8b0cc&lat=${lat}&lon=${lon}`).then((respose) =>{
+//     weather=respose.data
 
-    let forecast=weather.data.map((item,idx)=>{
-      return new ForeCast(item);
-    })
-    res.json(forecast);
-  });
+//     let forecast=weather.data.map((item,idx)=>{
+//       return new ForeCast(item);
+//     })
+//     res.json(forecast);
+//   });
   
-});
+// });
 
 // app.get('/movies' ,(req,res) =>{
 //   let query = req.query.query
@@ -45,12 +45,12 @@ app.get('/weather',(req,res)=>{
 //   }).catch(error=>res.send(error.message));
 // })
 
-class ForeCast{
-  constructor(weatherData){
-    this.date=weatherData.valid_date
-    this.description=weatherData.weather.description
-  }
-} 
+// class ForeCast{
+//   constructor(weatherData){
+//     this.date=weatherData.valid_date
+//     this.description=weatherData.weather.description
+//   }
+// } 
 
 // class Movie {
 //   constructor(movieData){

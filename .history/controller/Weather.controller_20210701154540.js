@@ -2,7 +2,7 @@ const axios =require('axios');
 
 const ForeCast = require('../models/ForCast.models');
 
-const weather = (req,res)=>{
+const weatherController = (req,res)=>{
 
     let lat = req.query.lat
     let lon = req.query.lon
@@ -22,4 +22,4 @@ const weather = (req,res)=>{
     })
 }
 
-module.exports.weather;
+module.exports.weatherController;
