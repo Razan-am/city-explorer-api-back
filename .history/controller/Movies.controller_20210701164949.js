@@ -1,7 +1,7 @@
 const axios =require('axios');
 
 const Movie = require('../models/Movie.models');
-const Cache = require('../memory/cache');
+const Cache = require('../utils/cache');
 
 
 let cache= new Cache();

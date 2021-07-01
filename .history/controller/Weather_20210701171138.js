@@ -8,7 +8,7 @@ const Cache = require('../memory/cache');
 let cache= new Cache();
 cache['data']=[];
 cache['timestamp']=Date.now();
-console.log(cache['timestamp']);
+console.log(cach['timestamp']);
 
 const weatherController = (req,res)=>{
 

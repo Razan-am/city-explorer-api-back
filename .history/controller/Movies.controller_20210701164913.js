@@ -1,7 +1,7 @@
 const axios =require('axios');
 
 const Movie = require('../models/Movie.models');
-const Cache = require('../memory/cache');
+const Cache = require('../utils/cache');
 
 
 let cache= new Cache();
@@ -13,7 +13,7 @@ const movieController = (req,res) =>{
   let moviesList=[];
   if(query){
     if (cache.data.length >0){
-      moviesList=cache.data.map(data => new Movie(data));
+      forecast=cache.data.map(data => new ForeCast(data));
       console.log('The Cache Data');
       res.send(moviesList);
     }else{

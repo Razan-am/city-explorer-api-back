@@ -8,7 +8,7 @@ const PORT =process.env.PORT;
 const weatherController=require('./controller/Weather');
 const movieController=require('./controller/Movies.controller');
 
-const Cashe=require('./memory/cache');
+const Cashe=require('./utils/cache');
 const axios =require('axios');
 
 app.get('/weather',weatherController);

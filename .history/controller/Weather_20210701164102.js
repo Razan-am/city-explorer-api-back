@@ -2,13 +2,11 @@ const axios =require('axios');
 console.log('hello');
 
 const ForeCast = require('../models/ForCast.models');
-const Cache = require('../memory/cache');
+const Cache = require('../utils/cache');
 
 
 let cache= new Cache();
 cache['data']=[];
-cache['timestamp']=Date.now();
-console.log(cache['timestamp']);
 
 const weatherController = (req,res)=>{
 
@@ -36,7 +34,6 @@ const weatherController = (req,res)=>{
       }).catch(error=>res.send(error.message))
     }
   }else{
-    res.send('Please provide the app with lattitude and longitude');
   }
 }
 
