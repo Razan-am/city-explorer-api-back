@@ -5,12 +5,12 @@ const Cache = require('../memory/cache');
 
 
 let cache= new Cache();
+cache['data']=[];
 
 
 const movieController = (req,res) =>{
   let query = req.query.query
   let moviesList=[];
-  cache['data']=[];
   if(query){
     if (cache.data.length >0){
       moviesList=cache.data.map(data => new Movie(data));
